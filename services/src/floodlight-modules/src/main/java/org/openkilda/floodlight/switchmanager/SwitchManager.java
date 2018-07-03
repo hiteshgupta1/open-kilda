@@ -72,6 +72,7 @@ import org.projectfloodlight.openflow.protocol.OFMeterConfigStatsRequest;
 import org.projectfloodlight.openflow.protocol.OFMeterFlags;
 import org.projectfloodlight.openflow.protocol.OFMeterMod;
 import org.projectfloodlight.openflow.protocol.OFMeterModCommand;
+import org.projectfloodlight.openflow.protocol.OFPortDesc;
 import org.projectfloodlight.openflow.protocol.OFType;
 import org.projectfloodlight.openflow.protocol.action.OFAction;
 import org.projectfloodlight.openflow.protocol.action.OFActions;
@@ -1465,6 +1466,19 @@ public class SwitchManager implements IFloodlightModule, IFloodlightService, ISw
      */
     @Override
     public void sendPortUpEvents(final IOFSwitch sw) throws SwitchOperationException {
+        // FIXME(surabujin): DEBUG MTU overcome emulation - start
+        DatapathId victim = DatapathId.of("00:00:00:22:3d:5a:04:87");
+        if (victim.equals(sw.getId())) {
+            sw.getPorts().stream()
+                    .map(OFPortDesc::getPortNo)
+                    .filter(SwitchEventCollector::isPhysicalPort)
+                    .forEach(p -> kafkaProducer.postMessage(
+                            topoDiscoTopic,
+                            SwitchEventCollector.buildPortMessage(sw.getId(), p, PortChangeType.UP)));
+            return;
+        }
+        // FIXME(surabujin): DEBUG MTU overcome emulation - end
+
         if (sw.getEnabledPortNumbers() != null) {
             for (OFPort p : sw.getEnabledPortNumbers()) {
                 if (SwitchEventCollector.isPhysicalPort(p)) {
