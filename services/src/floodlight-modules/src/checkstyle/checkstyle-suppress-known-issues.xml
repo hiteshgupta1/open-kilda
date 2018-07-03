@@ -72,6 +72,7 @@
     <suppress files="src/main/java/org/openkilda/floodlight/pathverification/PathVerificationService.java" lines="152" checks="LeftCurly"/>
     <suppress files="src/main/java/org/openkilda/floodlight/pathverification/PathVerificationService.java" lines="162" checks="LeftCurly"/>
     <suppress files="src/main/java/org/openkilda/floodlight/pathverification/PathVerificationService.java" lines="253" checks="LineLength"/>
+    <suppress files="src/main/java/org/openkilda/floodlight/pathverification/PathVerificationService.java" lines="255" checks="OneStatementPerLine"/>
     <suppress files="src/main/java/org/openkilda/floodlight/pathverification/PathVerificationService.java" lines="257" checks="OperatorWrap"/>
     <suppress files="src/main/java/org/openkilda/floodlight/pathverification/PathVerificationService.java" lines="277" checks="WhitespaceAfter"/>
     <suppress files="src/main/java/org/openkilda/floodlight/pathverification/PathVerificationService.java" lines="280" checks="JavadocMethod"/>

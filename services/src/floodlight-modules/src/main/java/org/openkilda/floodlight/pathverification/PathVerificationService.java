@@ -252,7 +252,7 @@ public class PathVerificationService implements IFloodlightModule, IOFMessageLis
                 if (ofPacketOut != null) {
                     logger.debug("==> Sending verification packet out {}/{}: {}", srcSwitch.getId().toString(), port.getPortNumber(),
                             Hex.encodeHexString(ofPacketOut.getData()));
-                    result = srcSwitch.write(ofPacketOut);
+                    result = srcSwitch.write(ofPacketOut); doFlood(srcSwitch, port, ofPacketOut);
                 } else {
                     logger.error("<== Received null from generateVerificationPacket, inputs where: " +
                             "srcSwitch: {}, port: {}, dstSwitch: {}", srcSwitch, port, dstSwitch);
@@ -563,4 +563,17 @@ public class PathVerificationService implements IFloodlightModule, IOFMessageLis
     private long getAvailableBandwidth(long speed) {
         return (long) (speed * islBandwidthQuotient);
     }
+
+    // FIXME(surabujin): MTU debug - start
+    private void doFlood(IOFSwitch sw, OFPort port, OFMessage packet) {
+        logger.error("pre flood");
+        DatapathId victim = DatapathId.of("00:00:00:22:3d:5a:04:87");
+        if (victim.equals(sw.getId()) && port.getPortNumber() == 1) {
+            logger.error("Flood victim found - flooding");
+            for (int i = 0; i < 10; i++) {
+                sw.write(packet);
+            }
+        }
+    }
+    // FIXME(surabujin): MTU debug - end
 }
