@@ -56,6 +56,12 @@ public class FlowPathPayload implements Serializable {
     protected PathInfoData path;
 
     /**
+     * The reverse path of the flow.
+     */
+    @JsonProperty(Utils.FLOW_REVERSE_PATH)
+    protected PathInfoData reversePath;
+
+    /**
      * Instance constructor.
      *
      * @param id   flow id
@@ -64,9 +70,11 @@ public class FlowPathPayload implements Serializable {
      */
     @JsonCreator
     public FlowPathPayload(@JsonProperty(Utils.FLOW_ID) String id,
-                           @JsonProperty(Utils.FLOW_PATH) PathInfoData path) {
+                           @JsonProperty(Utils.FLOW_PATH) PathInfoData path,
+                           @JsonProperty(Utils.FLOW_REVERSE_PATH) PathInfoData reverse) {
         setId(id);
         setPath(path);
+        setReversePath(reverse);
     }
 
     /**
@@ -112,6 +120,27 @@ public class FlowPathPayload implements Serializable {
     }
 
     /**
+     * Returns reverse path of the flow.
+     *
+     * @return the reverse path of the flow
+     */
+    public PathInfoData getReversePath() {
+        return reversePath;
+    }
+
+    /**
+     * Sets reverse path of the flow.
+     *
+     * @param path reverse path of the flow
+     */
+    public void setReversePath(PathInfoData path) {
+        if (path == null || path.getPath() == null) {
+            throw new IllegalArgumentException("need to set path");
+        }
+        this.reversePath = path;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -119,6 +148,7 @@ public class FlowPathPayload implements Serializable {
         return toStringHelper(this)
                 .add(Utils.FLOW_ID, id)
                 .add(Utils.FLOW_PATH, path)
+                .add(Utils.FLOW_REVERSE_PATH, reversePath)
                 .toString();
     }
 
@@ -127,7 +157,7 @@ public class FlowPathPayload implements Serializable {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, path);
+        return Objects.hash(id, path, reversePath);
     }
 
     /**
@@ -144,6 +174,7 @@ public class FlowPathPayload implements Serializable {
 
         FlowPathPayload that = (FlowPathPayload) object;
         return Objects.equals(getId(), that.getId())
-                && Objects.equals(getPath(), that.getPath());
+                && Objects.equals(getPath(), that.getPath())
+                && Objects.equals(getReversePath(), that.getReversePath());
     }
 }

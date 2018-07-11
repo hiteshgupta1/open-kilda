@@ -20,6 +20,7 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 import org.openkilda.messaging.Utils;
 import org.openkilda.messaging.info.InfoData;
 import org.openkilda.messaging.info.event.PathInfoData;
+import org.openkilda.messaging.model.ImmutablePair;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -47,7 +48,7 @@ public class FlowPathResponse extends InfoData {
      * The response payload.
      */
     @JsonProperty(Utils.PAYLOAD)
-    protected PathInfoData payload;
+    protected ImmutablePair<PathInfoData, PathInfoData> payload;
 
     /**
      * Instance constructor.
@@ -56,7 +57,7 @@ public class FlowPathResponse extends InfoData {
      * @throws IllegalArgumentException if payload is null
      */
     @JsonCreator
-    public FlowPathResponse(@JsonProperty(Utils.PAYLOAD) PathInfoData payload) {
+    public FlowPathResponse(@JsonProperty(Utils.PAYLOAD) ImmutablePair<PathInfoData, PathInfoData> payload) {
         setPayload(payload);
     }
 
@@ -65,7 +66,7 @@ public class FlowPathResponse extends InfoData {
      *
      * @return response payload
      */
-    public PathInfoData getPayload() {
+    public ImmutablePair<PathInfoData, PathInfoData> getPayload() {
         return payload;
     }
 
@@ -74,7 +75,7 @@ public class FlowPathResponse extends InfoData {
      *
      * @param payload response payload
      */
-    public void setPayload(PathInfoData payload) {
+    public void setPayload(ImmutablePair<PathInfoData, PathInfoData> payload) {
         if (payload == null) {
             throw new IllegalArgumentException("need to set payload");
         }

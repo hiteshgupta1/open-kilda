@@ -923,13 +923,13 @@
     <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="257" checks="VariableDeclarationUsageDistance"/>
     <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="323" checks="VariableDeclarationUsageDistance"/>
     <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="419" checks="VariableDeclarationUsageDistance"/>
-    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="454" checks="VariableDeclarationUsageDistance"/>
-    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="584" checks="VariableDeclarationUsageDistance"/>
-    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="642" checks="VariableDeclarationUsageDistance"/>
-    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="671" checks="VariableDeclarationUsageDistance"/>
-    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="731" checks="VariableDeclarationUsageDistance"/>
-    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="751" checks="VariableDeclarationUsageDistance"/>
-    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="771" checks="VariableDeclarationUsageDistance"/>
+    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="455" checks="VariableDeclarationUsageDistance"/>
+    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="585" checks="VariableDeclarationUsageDistance"/>
+    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="643" checks="VariableDeclarationUsageDistance"/>
+    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="672" checks="VariableDeclarationUsageDistance"/>
+    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="732" checks="VariableDeclarationUsageDistance"/>
+    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="752" checks="VariableDeclarationUsageDistance"/>
+    <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="772" checks="VariableDeclarationUsageDistance"/>
     <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="1025" checks="LineLength"/>
     <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="1081" checks="WhitespaceAfter"/>
     <suppress files="src/test/java/org/openkilda/wfm/topology/flow/FlowTopologyTest.java" lines="1111" checks="WhitespaceAfter"/>

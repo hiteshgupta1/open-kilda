@@ -49,18 +49,23 @@ public final class Utils {
     public static final String DESTINATION = "destination";
 
     public static final String ROUTE = "route";
+    public static final String REROUTED = "rerouted";
     /**
      * The payload property.
      */
     public static final String PAYLOAD = "payload";
     /**
-     * The payload property.
+     * The flow id.
      */
     public static final String FLOW_ID = "flowid";
     /**
-     * The payload property.
+     * The flow path.
      */
     public static final String FLOW_PATH = "flowpath";
+    /**
+     * The flow reverse path.
+     */
+    public static final String FLOW_REVERSE_PATH = "reverse";
     /**
      * The default correlation ID value.
      */
@@ -108,9 +113,9 @@ public final class Utils {
      * @return true if output vlan operation type is valid
      */
     public static boolean validateOutputVlanType(final Integer outputVlanId, final OutputVlanType outputVlanType) {
-        return (outputVlanId != null && outputVlanId != 0) ?
-                (OutputVlanType.PUSH.equals(outputVlanType) || OutputVlanType.REPLACE.equals(outputVlanType)) :
-                (OutputVlanType.POP.equals(outputVlanType) || OutputVlanType.NONE.equals(outputVlanType));
+        return (outputVlanId != null && outputVlanId != 0)
+                ? (OutputVlanType.PUSH.equals(outputVlanType) || OutputVlanType.REPLACE.equals(outputVlanType))
+                : (OutputVlanType.POP.equals(outputVlanType) || OutputVlanType.NONE.equals(outputVlanType));
     }
 
     /**
@@ -121,9 +126,9 @@ public final class Utils {
      * @return true if output vlan operation type is valid
      */
     public static boolean validateInputVlanType(final Integer inputVlanId, final OutputVlanType outputVlanType) {
-        return (inputVlanId != null && inputVlanId != 0) ?
-                (OutputVlanType.POP.equals(outputVlanType) || OutputVlanType.REPLACE.equals(outputVlanType)) :
-                (OutputVlanType.PUSH.equals(outputVlanType) || OutputVlanType.NONE.equals(outputVlanType));
+        return (inputVlanId != null && inputVlanId != 0)
+                ? (OutputVlanType.POP.equals(outputVlanType) || OutputVlanType.REPLACE.equals(outputVlanType))
+                : (OutputVlanType.PUSH.equals(outputVlanType) || OutputVlanType.NONE.equals(outputVlanType));
     }
 
     /**

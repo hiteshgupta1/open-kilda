@@ -179,8 +179,6 @@
     <suppress files="src/main/java/org/openkilda/messaging/info/event/PathInfoData.java" lines="30" checks="CustomImportOrder"/>
     <suppress files="src/main/java/org/openkilda/messaging/HeartBeat.java" lines="1" checks="RegexpHeader"/>
     <suppress files="src/main/java/org/openkilda/messaging/Utils.java" lines="25" checks="HideUtilityClassConstructor"/>
-    <suppress files="src/main/java/org/openkilda/messaging/Utils.java" lines="111" checks="OperatorWrap"/>
-    <suppress files="src/main/java/org/openkilda/messaging/Utils.java" lines="124" checks="OperatorWrap"/>
     <suppress files="src/main/java/org/openkilda/messaging/BaseMessage.java" lines="33" checks="JavadocParagraph"/>
     <suppress files="src/main/java/org/openkilda/messaging/BaseMessage.java" lines="38" checks="JavadocParagraph"/>
     <suppress files="src/main/java/org/openkilda/messaging/BaseMessage.java" lines="43" checks="WhitespaceAround"/>
@@ -531,7 +529,6 @@
     <suppress files="src/main/java/org/openkilda/messaging/payload/flow/FlowEndpointPayload.java" lines="32" checks="JavadocParagraph"/>
     <suppress files="src/main/java/org/openkilda/messaging/payload/flow/FlowEndpointPayload.java" lines="93" checks="NeedBraces"/>
     <suppress files="src/main/java/org/openkilda/messaging/payload/flow/FlowEndpointPayload.java" lines="94" checks="NeedBraces"/>
-    <suppress files="src/main/java/org/openkilda/messaging/payload/flow/FlowReroutePayload.java" lines="19" checks="CustomImportOrder"/>
     <suppress files="src/main/java/org/openkilda/messaging/payload/ResourcePool.java" lines="26" checks="JavadocParagraph"/>
     <suppress files="src/main/java/org/openkilda/messaging/payload/ResourcePool.java" lines="28" checks="JavadocParagraph"/>
     <suppress files="src/main/java/org/openkilda/messaging/payload/ResourcePool.java" lines="65" checks="NeedBraces"/>

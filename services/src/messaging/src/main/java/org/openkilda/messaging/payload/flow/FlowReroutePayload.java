@@ -15,20 +15,135 @@
 
 package org.openkilda.messaging.payload.flow;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import static com.google.common.base.MoreObjects.toStringHelper;
+
+import org.openkilda.messaging.Utils;
 import org.openkilda.messaging.info.event.PathInfoData;
 
-public class FlowReroutePayload extends FlowPathPayload {
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-    @JsonProperty("rerouted")
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * Flow reroute representation class.
+ */
+@JsonSerialize
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        Utils.FLOW_ID,
+        Utils.FLOW_PATH})
+public class FlowReroutePayload implements Serializable {
+
+    /**
+     * Serialization version number constant.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * The id of the flow.
+     */
+    @JsonProperty(Utils.FLOW_ID)
+    protected String id;
+
+    /**
+     * The path of the flow.
+     */
+    @JsonProperty(Utils.FLOW_PATH)
+    protected PathInfoData path;
+
+    @JsonProperty(Utils.REROUTED)
     private boolean rerouted;
 
     public FlowReroutePayload(String id, PathInfoData path, boolean rerouted) {
-        super(id, path);
+        setId(id);
+        setPath(path);
         this.rerouted = rerouted;
+    }
+
+    /**
+     * Returns id of the flow.
+     *
+     * @return id of the flow
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets id of the flow.
+     *
+     * @param id id of the flow
+     */
+    public void setId(String id) {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("need to set id");
+        }
+        this.id = id;
+    }
+
+    /**
+     * Returns path of the flow.
+     *
+     * @return path of the flow
+     */
+    public PathInfoData getPath() {
+        return path;
+    }
+
+    /**
+     * Sets path of the flow.
+     *
+     * @param path path of the flow
+     */
+    public void setPath(PathInfoData path) {
+        if (path == null || path.getPath() == null) {
+            throw new IllegalArgumentException("need to set path");
+        }
+        this.path = path;
     }
 
     public boolean isRerouted() {
         return rerouted;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return toStringHelper(this)
+                .add(Utils.FLOW_ID, id)
+                .add(Utils.FLOW_PATH, path)
+                .add(Utils.REROUTED, rerouted)
+                .toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, path);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+
+        FlowReroutePayload that = (FlowReroutePayload) object;
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getPath(), that.getPath());
     }
 }
