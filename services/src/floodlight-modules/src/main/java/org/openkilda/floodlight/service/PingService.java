@@ -97,11 +97,11 @@ public class PingService extends AbstractOfHandler implements IFloodlightService
     public boolean handle(CommandContext commandContext, IOFSwitch sw, OFMessage message, FloodlightContext context) {
         OFPacketIn packet = (OFPacketIn) message;
 
-        Ethernet eth = IFloodlightProviderService.bcStore.get(context, IFloodlightProviderService.CONTEXT_PI_PAYLOAD);
         if (filterOutByCookie(sw, packet)) {
             return false;
         }
 
+        Ethernet eth = IFloodlightProviderService.bcStore.get(context, IFloodlightProviderService.CONTEXT_PI_PAYLOAD);
         byte[] payload = unwrapData(switchUtils.dpIdToMac(sw.getId()), eth);
         if (payload == null) {
             return false;
