@@ -43,7 +43,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class KafkaMessageCollector implements IFloodlightModule {
-    private static int EXEC_POOL_SIZE = 10;
+    private static int EXEC_POOL_SIZE = 200;
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaMessageCollector.class);
 
