@@ -139,7 +139,7 @@ public class PingRequestCommand extends Abstract {
 
         future.cancel(false);
 
-        log.error("Unable to send ping {} - switch I/O timeout ({}ms)", PingService.SWITCH_PACKET_OUT_TIMEOUT, ping);
+        log.error("Unable to send ping {} - switch I/O timeout ({}ms)", ping, PingService.SWITCH_PACKET_OUT_TIMEOUT);
         sendErrorResponse(ping.getPingId(), Ping.Errors.WRITE_FAILURE);
     }
 
