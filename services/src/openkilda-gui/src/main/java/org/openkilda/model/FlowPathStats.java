@@ -24,7 +24,7 @@ import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder({ "flowid", "startDate", "endDate", "downsample", "switches", "direction" })
+@JsonPropertyOrder({ "flowid", "startDate", "endDate", "downsample", "switches", "direction", "metric" })
 public class FlowPathStats {
 
     @JsonProperty("flowid")
@@ -41,6 +41,9 @@ public class FlowPathStats {
 
     @JsonProperty("downsample")
     private String downsample;
+    
+    @JsonProperty("metric")
+    private String metric;
 
     @JsonProperty("switches")
     private List<String> switches;
@@ -93,4 +96,12 @@ public class FlowPathStats {
         this.direction = direction;
     }
 
+    public String getMetric() {
+        return metric;
+    }
+    
+    public void setMetric(String metric) {
+        this.metric = metric;
+    }
+    
 }
